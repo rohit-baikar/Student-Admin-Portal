@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<head>
+	<title>Student Performance</title>
+<style>
+	*{
+		margin:0;
+		padding:0;
+		font-size: 20px;
+		font-family:'Franklin Gothic Medium';
+	}
+	body{
+		background-color: rgb(179, 230, 235);
+	}
+	.container {
+	            	background: #ffffff;
+            		border-radius: 10px;
+            		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            		padding: 20px;
+		margin-top: 20px;
+            		width: 80%;
+		max-width: 700px;
+            		text-align: center;
+        	}
+	h1 {
+            		color: #2c3e50;
+            		margin-bottom: 20px;
+		font-size: 30px;
+        	}
+	form {
+            		margin: 20px 0;
+        	}	
+        	table {
+            		width: 100%;
+            		margin-bottom: 20px;
+        	}
+        	table td {
+            		padding: 10px 0;
+        	}
+	input[type="submit"] {
+            		background-color: #3498db;
+            		color: #ffffff;
+            		border: none;
+            		padding: 10px 20px;
+            		font-size: 23px;
+            		border-radius: 5px;
+            		cursor: pointer;
+            		transition: background-color 0.3s ease;
+        	}
+	input[type="submit"]:hover {
+		background-color: #1d70a2;
+        	}
+
+</style>
+</head>
+<body>
+<center>
+<div class="container">
+    <h1>Compare Student Mark Sheets</h1>
+    <form action="" method="post", enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            {{ fm.as_table }}
+        </table>
+        <input type="submit" value="Check">
+    </form>
+    <h3>Similarity between the two marksheets: <strong>{{ msg }} %</strong></h3>
+</div>
+</center>
+</body>
+{% endblock %}
